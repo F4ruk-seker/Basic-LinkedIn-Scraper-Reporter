@@ -7,8 +7,9 @@ class PersonSearchModel:
     title: str | None
     country: str | None
     details: list[str] | None
+    photograph: str | None
 
     @classmethod
     def load_default(cls):
-        return cls(None, None, None, None)
+        return cls(None, None, None, None, None)
 

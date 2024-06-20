@@ -37,10 +37,21 @@ class Scraper(ABC):
         raise NotImplementedError
 
     def sleep(self, time):
-        if self.show_counter:
+        if type(time) is float and self.show_counter:
+            print(f'\r{time}.second left', end='')
+        if type(time) is int and self.show_counter:
             for _ in range(time, 0, -1):
                 print(f'\r{_}.second left', end='')
                 sleep(1)
-            print('\n')
+            print('')
         else:
             sleep(time)
+
+    def __del__(self):
+        if self.browser is not None:
+            self.browser.close()
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.browser.quit()
+
+
