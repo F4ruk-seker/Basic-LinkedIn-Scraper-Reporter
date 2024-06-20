@@ -7,7 +7,7 @@
 - [ ] terminal input 
 
 ## Outputs
-- [ ] PDF Result page
-- [ ] HTML Result page
-- [ ] JSON Result page
-- [ ] CSV Result page
+- [x] PDF Result page
+- [x] HTML Result page
+- [x] JSON Result page
+- [x] CSV Result page
