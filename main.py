@@ -1,16 +1,8 @@
 # user search with first name and last name >
-from dataclasses import dataclass
+from models.person_search_model import PersonSearchModel
 from selenium.webdriver import Firefox
 from selenium.webdriver.common.by import By
 from time import sleep
-
-
-@dataclass
-class PersonSearchData:
-    name: str | None
-    title: str | None
-    country: str | None
-    details: list[str] | None
 
 
 RESULT: list = []
@@ -54,7 +46,7 @@ def get_object(frame, by, value, many: bool = False):
 
 for person in person_list.find_elements(By.TAG_NAME, 'li'):
 
-    person_search_data: PersonSearchData = PersonSearchData(None, None, None, None)
+    person_search_data: PersonSearchModel = PersonSearchModel.load_default()
     if name := get_object(person, By.TAG_NAME, 'h3'):
         person_search_data.name = name.text
     if title := get_object(person, By.TAG_NAME, 'h4'):
@@ -66,7 +58,7 @@ for person in person_list.find_elements(By.TAG_NAME, 'li'):
     print(person_search_data)
     RESULT.append(person_search_data)
 
-print("RESULT   ")
+print("RESULT")
 print(RESULT)
 print("END")
 
